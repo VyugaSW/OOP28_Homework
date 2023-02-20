@@ -20,9 +20,9 @@ int main()
     Vocabular a;
     a.readFromFile("C:\\Test\\test.txt");
     a.dataOfAllWords();
-    //a.print();
-    //cout << "\n\n";
-    //a.printMostRepeats();
+    a.print();
+    cout << "\n\n";
+    a.printMostRepeats();
     a.recordingToFile("C:\\Test\\test2.txt");
 
 

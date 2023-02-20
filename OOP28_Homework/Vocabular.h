@@ -52,6 +52,7 @@ void Vocabular::readFromFile(const char* path) {
 			mainStr.push_back(temp);
 		}
 		fclose(out);
+		cout << "File was read\n";
 	}
 	// Entire string in lowercase
 	transform(mainStr.begin(), mainStr.end(), mainStr.begin(), tolower);
@@ -110,23 +111,28 @@ void Vocabular::printMostRepeats() {
 }
 
 void Vocabular::recordingToFile(const char* path) {
-	FILE* in;
 
-	char* buffer = new char[125];
-	if (!fopen_s(&in, path, "w")) {
-		map<string, int>::iterator iter = words.begin();
-		for (; iter != words.end(); iter++) {
-			strcpy_s(buffer, 126, iter->first.c_str());
-			fputs(buffer, in);
-			fputc(' ', in);
-			fputc('-', in);
-			fputc(' ', in);
-			fprintf(in,"%d", iter->second);
-			fputc('\n', in);
+	map<string, int>::iterator iter = words.begin();
+
+	if (iter != words.end()) {
+		FILE* in;
+		char* buffer = new char[125];
+		if (!fopen_s(&in, path, "w")) {
+			for (; iter != words.end(); iter++) {
+				strcpy_s(buffer, 126, iter->first.c_str());
+				fputs(buffer, in);
+				fputc(' ', in);
+				fputc('-', in);
+				fputc(' ', in);
+				fprintf(in, "%d", iter->second);
+				fputc('\n', in);
+			}
+			fclose(in);
+			cout << "File was recorded\n";
 		}
-		fclose(in);
 	}
-
+	else
+		cout << "Vocabular is empty\n";
 }
 
 string Vocabular::getMainStr() {
