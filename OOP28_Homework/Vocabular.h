@@ -20,7 +20,7 @@ class Vocabular {
 			if (tempStr == iter->first) // If this word (tempStr) already exists
 				return iter->second;
 		}
-		// If this map dont' has this word (tempStr)
+		// If this map doesn't this word (tempStr)
 		return 0;
 	}
 
