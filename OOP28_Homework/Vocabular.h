@@ -124,6 +124,7 @@ void Vocabular::recordingToFile(const char* path) {
 			fprintf(in,"%d", iter->second);
 			fputc('\n', in);
 		}
+		fclose(in);
 	}
 
 }
